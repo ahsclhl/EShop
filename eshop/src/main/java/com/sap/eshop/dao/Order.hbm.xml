@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 9, 2015 12:38:21 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.sap.eshop.dao.Order" table="order" catalog="anytime">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="product" class="com.sap.eshop.dao.Product" fetch="select">
+            <column name="Product" not-null="true" />
+        </many-to-one>
+        <property name="custName" type="string">
+            <column name="CustName" length="20" not-null="true" />
+        </property>
+        <property name="custMobile" type="int">
+            <column name="CustMobile" not-null="true" />
+        </property>
+        <property name="custPhone" type="string">
+            <column name="CustPhone" length="45" />
+        </property>
+        <property name="custAddr" type="string">
+            <column name="CustAddr" length="100" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="Status" not-null="true">
+                <comment>1 - In Process 2 - Goods Ready 3 - Delivered 4 - Closed</comment>
+            </column>
+        </property>
+        <property name="time" type="timestamp">
+            <column name="Time" length="19" not-null="true" />
+        </property>
+        <property name="comments" type="string">
+            <column name="Comments" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>

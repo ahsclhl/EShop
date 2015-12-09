@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 9, 2015 12:38:21 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.sap.eshop.dao.Admin" table="admin" catalog="anytime">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="Name" length="50" />
+        </property>
+        <property name="password" type="string">
+            <column name="Password" length="20" />
+        </property>
+        <property name="level" type="java.lang.Integer">
+            <column name="Level">
+                <comment>1 - Customer Service Staff 2 - Content Admin 9 - System Admin</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

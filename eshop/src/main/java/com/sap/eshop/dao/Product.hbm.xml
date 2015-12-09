@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 9, 2015 12:38:21 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.sap.eshop.dao.Product" table="product" catalog="anytime">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="productType" class="com.sap.eshop.dao.ProductType" fetch="select">
+            <column name="Type" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="Name" length="100" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" />
+        </property>
+        <property name="smallImg" type="string">
+            <column name="SmallImg" length="45" />
+        </property>
+        <property name="bigImg" type="string">
+            <column name="BigImg" length="45" />
+        </property>
+        <property name="price" type="double">
+            <column name="Price" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="param1" type="string">
+            <column name="Param1" length="45" />
+        </property>
+        <property name="param2" type="string">
+            <column name="Param2" length="45" />
+        </property>
+        <property name="param3" type="string">
+            <column name="Param3" length="45" />
+        </property>
+        <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Product" not-null="true" />
+            </key>
+            <one-to-many class="com.sap.eshop.dao.Order" />
+        </set>
+    </class>
+</hibernate-mapping>
